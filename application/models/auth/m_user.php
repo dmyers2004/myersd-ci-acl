@@ -55,7 +55,7 @@ class m_user extends CI_Model {
     $query = $this->db->select('id')->get_where($this->table,array('email'=>$email,'password'=>$this->hash_password($password.$salt_row->salt),'active'=>1));
 
     /* use this to get the login encoded password */
-    echo('***** LOGIN QUERY '.$this->db->last_query().chr(10));
+    //echo('***** LOGIN QUERY '.$this->db->last_query().chr(10));
 
     /* Fail if we don't get exactly 1 record */
     if ($query->num_rows() !== 1) return FALSE;
@@ -154,10 +154,6 @@ class m_user extends CI_Model {
   
   /* return boolean */
   public function validate_profile($profile = NULL) {
-    if (!is_object($profile)) {
-      $profile = $this->get_by($profile);
-    }
-  
     if (!is_object($profile)) return FALSE;
     if (!isset($profile->access)) return FALSE;
     if (!is_array($profile->access)) return FALSE;

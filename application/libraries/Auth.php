@@ -24,7 +24,7 @@ class Auth {
   }
 
   public function has_profile() {
-    return $this->m_user->validate_profile();
+    return $this->m_user->validate_profile($this->CI->profile);
   }
 
   /*
@@ -34,13 +34,12 @@ class Auth {
   public function set_profile($profile) {
     if (!$this->m_user->validate_profile($profile)) {
       $this->CI->profile = new stdClass();
-      $this->session->set_userdata('profile',$this->CI->profile);
       $set = FALSE;
     } else {
       $this->CI->profile = $profile;
-      $this->session->set_userdata('profile',$profile);
       $set = TRUE;
     }
+    $this->session->set_userdata('profile',$this->CI->profile);
     return $set;
   }
 
@@ -55,7 +54,7 @@ class Auth {
 
     $pass = $this->m_user->get_by_login($email,$password);
     if ($pass === FALSE) return FALSE;
-         
+
     return $this->set_profile($pass);
   }
   

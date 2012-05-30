@@ -19,12 +19,10 @@ class Flash_msg {
     $this->CI =& get_instance();
     
     /* test dependancies */
-    if (!isset($this->CI->asset) || !isset($this->CI->session)) show_error('The Asset &amp; Session Libraries are required to be loaded before the Flash Msg Library');
+    if (!isset($this->CI->session)) show_error('The Session Libraries are required to be loaded before the Flash Msg Library');
     
     /* attach header content */
-    $this->CI->asset->link('jquery.bootstrap.growl.css'); /* load the flash_msg css */
-    $this->CI->asset->script('jquery.bootstrap.growl.js'); /* load the flash_msg js */
-    $this->CI->asset->extra($this->html());
+    $this->CI->data['flash_msg'] = $this->html();
   }
 
   /* most basic add function */
@@ -42,7 +40,7 @@ class Flash_msg {
   }
 
   public function html() {
-    $html = '';
+    $html = '<link href="'.base_url().'assets/css/jquery.bootstrap.growl.css" rel="stylesheet"><script src="'.base_url().'assets/js/jquery.bootstrap.growl.js"></script>';
     $msgs = $this->CI->session->flashdata('flash_messages');
     if (is_array($msgs)) {
     	$html = '<script>$(document).ready(function(){';

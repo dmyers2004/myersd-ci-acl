@@ -6,10 +6,12 @@
     <link href="<?=base_url() ?>assets/css/application.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="<?=base_url() ?>assets/ico/favicon.ico">
+
+    <script src="<?=base_url() ?>assets/js/jquery-1.7.2.min.js"></script>
+    <script src="<?=base_url() ?>assets/js/application.js"></script>
+    <?=$this->asset->header() ?>
+    <?=$flash_msg ?>
+
   </head>
 <body>
 <?=$container; ?>
-<script src="<?=base_url() ?>assets/js/jquery-1.7.2.min.js"></script>
-<script src="<?=base_url() ?>assets/js/application.js"></script>
-</body>
-</html>

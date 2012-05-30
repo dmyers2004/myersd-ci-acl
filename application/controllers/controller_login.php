@@ -9,7 +9,7 @@ class controller_login extends MY_Controller {
 	
 	public function login() {
 	  $pass = $this->auth->login();
-	  if ($pass !== FALSE) redirect('admin/dashboard');
+	  if ($pass !== FALSE) redirect('admin/');
 
     $this->flash_msg->red('Your login has failed. Please try again');
     redirect('login');

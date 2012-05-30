@@ -4,13 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
+    {header_meta}
 
-    <title>ACL</title>
-    <link href="<?=base_url() ?>assets/css/myers/myers.css" rel="stylesheet">
+    <title>{application_name}</title>
+    {header_css}
     <link href="<?=base_url() ?>assets/css/application.css" rel="stylesheet">
 
     <script src="<?=base_url() ?>assets/js/jquery-1.7.2.min.js"></script>
+    {header_js}
     <script src="<?=base_url() ?>assets/js/application.js"></script>
+    
     <?=$this->asset->header() ?>
     <?=$flash_msg ?>
 
@@ -21,4 +24,3 @@
     <link rel="apple-touch-icon-precomposed" href="<?=base_url() ?>assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
 <body>
-<?=$container; ?>
